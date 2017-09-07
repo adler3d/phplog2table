@@ -1,0 +1,3 @@
+RewriteBase /
+RewriteEngine On
+RewriteRule ^(.*)$ logger.php [L,QSA]
