@@ -2,16 +2,16 @@
 <html>
  <head>
   <meta charset="utf-8">
-  <title>eval on http://adler.hol.es</title><style type="text/css">textarea{width:99%}</style>
+  <style type="text/css">textarea{width:99%}</style>
  </head>
- <body onload="document.getElementById('code').focus();">
+ <body onload="document.getElementById('code').focus();document.title='eval on '+location.hostname">
   <form id="postform" action="eval.php" method="post">
     <p><b>code:</b></p>
     <p><textarea spellcheck=false rows="15" name="code" id="code" onkeypress="if(event.keyCode==10||(event.ctrlKey&&event.keyCode==13))document.getElementById('postform').submit();"></textarea></p>
     <p><b>data:</b></p>
-    <p><textarea spellcheck=false rows="10" name="data"></textarea></p>
+    <p><textarea spellcheck=false rows="10" name="data" id="data" onkeypress="if(event.keyCode==10||(event.ctrlKey&&event.keyCode==13))document.getElementById('postform').submit();"></textarea></p>
     <p><input type="submit" value="send"></p>
   </form>
-  <h2>version 1.4</h2>
+  <h2>version 1.5</h2>
  </body>
 </html>
