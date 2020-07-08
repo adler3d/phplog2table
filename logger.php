@@ -23,7 +23,15 @@ function logger_entry_point()
     $log_string=$log_flag?"\n":"";
     $log_string.=json_encode($log_object);
     $fd=fopen($log_filename,"a");
-    fwrite($fd,$log_string);
+    if(flock($fd, LOCK_EX)){
+      fwrite($fd,$log_string);
+      fflush($fd);
+      flock($fd,LOCK_UN);
+    }else{
+      $fp=fopen("logger_entry_point.flock.failed.txt","a");
+      fwrite($fp,$log_string);
+      fclose($fp);
+    }
     fclose($fd);
   }
   $filename=dirname(__FILE__).preg_replace("/^(.*?)\?.*$/","$1",$_SERVER["REQUEST_URI"]);
