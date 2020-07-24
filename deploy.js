@@ -1,6 +1,6 @@
 resp_off();
 
-var fn2body=fn=>({fn:fn,data:fs.readFileSync("phplog2table/"+fn).toString("binary")});
+var fn2body=fn=>({fn:fn,data:fs.readFileSync("phplog2table/"+fn).toString("binary"),from_js:"utf8->json->querystring->php->utf8_decode->fs"});
 
 var qap_async_for=(arr,elem2obj,ok,err)=>{
   var tasks=[];var tasks_n=arr.length;
